@@ -8,13 +8,13 @@ y = 603
 n = int(input("valor de n: "))
 t1 = 0
 t2 = 1
-t3 = 1
+t3 = 0
 count = 1
-pyautogui.sleep(5)
+pyautogui.sleep(0)
 
 while count <= n:
     pyautogui.moveTo(x, y)
-    print(t3)
+    print(t1)
     x = x + t3*10
     y = y + t3*10
     pyautogui.sleep(2)
