@@ -3,7 +3,7 @@ import pyautogui
 
 # 1ªfunção: clique fora do desenho para tirar a seleção do desenho, se for no paint.
 def clicar():
-    pyautogui.moveTo(1500,450)
+    pyautogui.moveTo(600,900)
     pyautogui.click(button='left')
 
 # 2ªfunção: move o mouse para o ponto inicial a ser desenhado, de acordo com a escala (em pixel)
@@ -49,7 +49,7 @@ count = 1
 # interação com o código.
 n = int(input('Digite quantas vezes quer fazer os quadrados (4 por vez): '))
 escala = int(input('e qual a escala que deseja trabalhar (pixels)? '))
-pyautogui.sleep(3)
+pyautogui.sleep(5)
 
 # geração dos retângulos aureos, em um ciclo de 4 quadrados por vez.
 while count <= n:

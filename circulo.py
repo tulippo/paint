@@ -3,42 +3,41 @@ import math as m
 
 X=600
 Y=600
-r = 100
+escala = 100
 ang = 180
-cx = 0
-cy = 0
 
 
 pyt.sleep(2)
-pyt.moveTo(X,Y)
-pyt.dragTo(X,Y+100,button='left')
-pyt.sleep(2)
-pyt.moveTo(X+100,Y)
+pyt.moveTo(X,Y) #posição inicial da espiral
 pyt.sleep(2)
 
-def circulo(raio1):
-    global X,Y,r,ang
+def circulo(raio1,kx,ky):
+    global X,Y,escala,ang
     n=0
     while n <= 90:
-        cx = (X+100 + raio1*r*m.cos(m.radians(ang)))
-        cy = (Y + raio1*r*m.sin(m.radians(ang)))
+        cx = (X - escala*kx + raio1*escala*m.cos(m.radians(ang)))
+        cy = (Y - escala*ky + raio1*escala*m.sin(m.radians(ang)))
         pyt.dragTo(cx,cy,button='left')
         ang+=-1
         n+=1
-    return cx, cy, ang
 
-def circulodobra(raio1,ang,angulagem):
-    global X,Y,r
+'''def circulodobra(raio1,kx,ky):
+    global X,Y,r,ang
     n=0
     while n <= 90:
-        cx = (X + raio1*r*m.cos(m.radians(ang)))
-        cy = (Y - 100+ raio1*r*m.sin(m.radians(ang)))
+        cx = (X - 100*kx + raio1*r*m.cos(m.radians(ang)))
+        cy = (Y - 100*ky + raio1*r*m.sin(m.radians(ang)))
         pyt.dragTo(cx,cy,button='left')
-        ang+=1*angulagem
+        ang+=-1
         n+=1
-    return cx, cy, ang
+    return cx, cy'''
 
-circulo(1)
-circulo(1)
-circulodobra(2,0,-1)
-circulodobra(3,90,1)
+circulo(1,-1,0)
+circulo(1,-1,0)
+circulo(2,0,0)
+circulo(3,0,-1)
+
+circulo(5,-2,-1)
+circulo(8,-2,2)
+circulo(13,3,2)
+circulo(21,3,-6)
