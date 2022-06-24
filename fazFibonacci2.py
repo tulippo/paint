@@ -41,7 +41,8 @@ def quadrado(s1,s2):
 # declaração das variavéis.
 x = 600
 y = 600
-termo1 = termo2 = 1
+termo1 = 1
+termo2 = 1
 termo3 = 0
 count = 1
 
