@@ -41,12 +41,12 @@ def quadrado(s1,s2):
 
 # 6ªfunção: desenhará os circulos da espiral
 def circulo(termo1,kx,ky):
-    global x,y,escala,ang
+    global escala,ang
     n=0
     raio = termo1
     while n <= 90:
-        cx = (x - escala*kx + raio*escala*m.cos(m.radians(ang)))
-        cy = (y - escala*ky + raio*escala*m.sin(m.radians(ang)))
+        cx = (600 - escala*kx + raio*escala*m.cos(m.radians(ang)))
+        cy = (600 - escala*ky + raio*escala*m.sin(m.radians(ang)))
         pyautogui.dragTo(cx,cy,button='left')
         ang+=-1
         n+=1
@@ -98,15 +98,15 @@ pyautogui.sleep(3)
 # enfim as espirais, limitadas até n == 2, são desenhadas
 if n == 1:
     pyautogui.sleep(2)
-    pyautogui.moveTo(x,y) #posição inicial da espiral
+    pyautogui.moveTo(600,600) #posição inicial da espiral
     pyautogui.sleep(2)
-    circulo(1,-2,1)
+    circulo(1,-1,0)
     circulo(1,-1,0)
     circulo(2,0,0)
     circulo(3,0,-1)
 elif n > 1:
     pyautogui.sleep(2)
-    pyautogui.moveTo(x,y) #posição inicial da espiral
+    pyautogui.moveTo(600,600) #posição inicial da espiral
     pyautogui.sleep(2)
     circulo(1,-1,0)
     circulo(1,-1,0)
