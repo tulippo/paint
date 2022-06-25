@@ -1,5 +1,6 @@
-# importando a biblioteca a ser trabalhada conjunto ao código.
+# importando as bibliotecas a serem trabalhadas conjunto ao código.
 import pyautogui
+import math as m
 
 # 1ªfunção: clique fora do desenho para tirar a seleção do desenho, se for no paint.
 def clicar():
@@ -38,6 +39,18 @@ def quadrado(s1,s2):
     move()
     fibonacci()
 
+# 6ªfunção: desenhará os circulos da espiral
+def circulo(termo1,kx,ky):
+    global x,y,escala,ang
+    n=0
+    raio = termo1
+    while n <= 90:
+        cx = (x - escala*kx + raio*escala*m.cos(m.radians(ang)))
+        cy = (y - escala*ky + raio*escala*m.sin(m.radians(ang)))
+        pyautogui.dragTo(cx,cy,button='left')
+        ang+=-1
+        n+=1
+
 # declaração das variavéis.
 x = 600
 y = 600
@@ -45,11 +58,24 @@ termo1 = 1
 termo2 = 1
 termo3 = 0
 count = 1
+ang = 180
 
 # interação com o código.
 n = int(input('Digite quantas vezes quer fazer os quadrados (4 por vez): '))
 escala = int(input('e qual a escala que deseja trabalhar (pixels)? '))
 pyautogui.sleep(5)
+
+# automatização para abrir o paint
+pyautogui.press('winleft')
+pyautogui.sleep(3)
+pyautogui.write('paint')
+pyautogui.sleep(5)
+pyautogui.press('enter')
+pyautogui.sleep(5)
+
+# seleciona a ferramenta de retângulo
+pyautogui.moveTo(723,119)
+pyautogui.leftClick()
 
 # geração dos retângulos aureos, em um ciclo de 4 quadrados por vez.
 while count <= n:
@@ -58,4 +84,40 @@ while count <= n:
     quadrado(-1,-1)
     quadrado(-1,1)
     count+=1
+
+# seleciona o lápis para desenhar as espirais.
+pyautogui.moveTo(723,119)
+pyautogui.leftClick()
+tab = 0
+while tab <= 20:
+    pyautogui.press('tab')
+    tab+=1
+pyautogui.press('enter')
+pyautogui.sleep(3)
+
+# enfim as espirais, limitadas até n == 2, são desenhadas
+if n == 1:
+    pyautogui.sleep(2)
+    pyautogui.moveTo(x,y) #posição inicial da espiral
+    pyautogui.sleep(2)
+    circulo(1,-2,1)
+    circulo(1,-1,0)
+    circulo(2,0,0)
+    circulo(3,0,-1)
+elif n > 1:
+    pyautogui.sleep(2)
+    pyautogui.moveTo(x,y) #posição inicial da espiral
+    pyautogui.sleep(2)
+    circulo(1,-1,0)
+    circulo(1,-1,0)
+    circulo(2,0,0)
+    circulo(3,0,-1)
+
+    circulo(5,-2,-1)
+    circulo(8,-2,2)
+    circulo(13,3,2)
+    circulo(21,3,-6)
+else: 
+    print('Digite um valor válido')
+# fim
 

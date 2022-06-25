@@ -3,7 +3,7 @@ import math as m
 
 X=600
 Y=600
-escala = 100
+escala = 50
 ang = 180
 
 
