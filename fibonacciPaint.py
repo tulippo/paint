@@ -74,7 +74,8 @@ pyautogui.press('enter')
 pyautogui.sleep(5)
 
 # seleciona a ferramenta de retângulo
-pyautogui.moveTo(723,119)
+'''pyautogui.moveTo(723,119) <- para a versao mais recente do paint'''
+pyautogui.moveTo(500,60)    
 pyautogui.leftClick()
 
 # geração dos retângulos aureos, em um ciclo de 4 quadrados por vez.
@@ -86,7 +87,8 @@ while count <= n:
     count+=1
 
 # seleciona o lápis para desenhar as espirais.
-pyautogui.moveTo(723,119)
+'''pyautogui.moveTo(723,119) <- para a versao mais recente do paint'''
+pyautogui.moveTo(400,60)
 pyautogui.leftClick()
 tab = 0
 while tab <= 20:
